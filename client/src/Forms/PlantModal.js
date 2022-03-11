@@ -17,7 +17,7 @@ function PlantModal({plant,show,handleClose}) {
             </div>
         </Modal.Body>
         <Modal.Footer id="plantModalFooter">
-            <button onClick={handleClose}> Close</button>
+            <Button onClick={handleClose}> Close</Button>
         </Modal.Footer>
     </Modal> : <></>
      );

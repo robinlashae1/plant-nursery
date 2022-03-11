@@ -29,6 +29,7 @@
   color: white;
 }
 
+
 /* Plant Card */
 .other{
   width: 19%;
@@ -49,11 +50,12 @@
 }
 
 .nursery{
-width: 19%;
-height: 20%;
-max-height: 300px;
+width: 15%;
+height: 15%;
+max-height: 150px;
 display: flex;
 flex-direction: column;
+flex-wrap: nowrap
 }
 #otherPlantImg{
   width: 90%;
@@ -74,15 +76,17 @@ margin-top: -4px;
 }
 #nurseryPlantImg{
   width: 90%;
-  height: 50%;
 }
 #nurseryPlantName{
-  text-align: center;
-  margin-top: -15px;
+  text-align: center !important;
+  margin-top: auto;
+}
+#nurseryPlantAge{
+  margin-top: -20px;
 }
 #plantNameAge{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 #plantDescriptionSpace{
   width: 100%;
@@ -101,7 +105,7 @@ margin-top: -4px;
   flex-direction: row;
 }
 #removePlantButton{
-  width: 25%;
+
 }
 /* Bottom Border */
 #flowerBorder{
@@ -110,20 +114,34 @@ margin-top: -4px;
 }
 /* 1Home Banner */
 .navLinks:hover{
-  text-decoration: underline;
- color: rgb(0, 0, 0);
- background-color: #ECB984;
+  text-decoration: underline !important;
+ color: rgb(0, 0, 0) !important;
+ background-color: #ECB984 !important;
 }
-
+.logoutButton{
+  background-color: rgba(0, 0, 0, 0) !important;
+  border: none;
+}
 #title-banner{
-  height: 60px;
+  height: 100%;
+  width:20%;
   color: black;
   font-size: 25px;
   font-family: fantasy;
   text-align: left;
   padding-left: 20px;
-  padding-top: 3px;
+  margin-right: 10px;
+  margin-top: auto;
 }
+#navLinkDiv{
+margin: auto;
+width: 55%;
+}
+.homepage{
+  display: inline-block;
+  width: 100%;
+  height: 20%
+  }
 
 /* HomePage */
 .Home{
@@ -219,9 +237,39 @@ body.modal-open {
 #modalClose{
   right: 0;
 }
+/* Add Plant Div */
+#addPlantForm{
+  width: 100%;
+  text-align: center;
+}
+/* Updates Modal */
+#updateDiv{
+width: 95%;
+background-color: #ECB984;
+margin-bottom: 5px;
+}
+#updateStatusDate{
+  display: flex;
+  flex-direction: row;
+  }
 /* Nursery Page */
 .nurseryPage{
   
+}
+#nurseryPlantSpace{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 85%;
+  position: absolute;
+  margin-left: 25px;
+}
+#collapseSpace{
+  right:0;
+  margin-right: 10px;
+  position: absolute;
+  width: 15%;
+  background-color: #5c9741;
 }
 #collapseForm{
   right:0;

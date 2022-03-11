@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     def index
-        render json: User.all
+        users = User.all
+        render json: users.to_json(include: { plants: { include: :updates } } )
     end
     def create
         user = User.create!(user_params)
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
     def show
         user = User.find_by(id: session[:user_id])
         if user
-            render json: user
+            render json: user.to_json(include: { plants: { include: :updates } } )
         else
             render json: {error: "Not authorized"}, status: unauthorized
         end

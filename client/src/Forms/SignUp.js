@@ -36,7 +36,7 @@ function AddPlant({show,handleClose}) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="modalBody">
-        <form onSubmit={console.log("submitted")} className="modal-details" className="modal-content" className="modalBody">
+        <form onSubmit={console.log("submitted")} className="modal-details modal-content modalBody" >
             <label for="name">Name</label>
             <input type="text"  onChange={(e)=>{setNewName(e.target.value)}}/> <br/>
             <label for="Description">Email</label>

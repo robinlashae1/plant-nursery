@@ -4,14 +4,14 @@ import PlantCard from "./PlantCard";
 import {useState} from "react"
 import PlantModal from "../Forms/PlantModal";
 
-function OtherPlants({plants}) {
+function OtherPlants({plants,user,handleLogoutClick}) {
     const [modalOpen, setModalOpen]=useState(false)
     const [modalData, setModalData]=useState([])
     function renderPlants(plants){
         return(
          plants.map(plant => {
             return(
-                <PlantCard handleModalOpen={handleModalOpen} className={"OtherPlant"} plant={plant}/>  
+                <PlantCard key={plant.id} handleModalOpen={handleModalOpen} className={"OtherPlant"} plant={plant}/>  
          )}
          
          )
@@ -26,9 +26,9 @@ function OtherPlants({plants}) {
     }
     return ( 
         <div className="aboutPage">
-        <HomeBanner />
+        <HomeBanner handleLogoutClick={handleLogoutClick} user={user}/>
         <div id="otherPlantsLanding">
-          <p>Other Plants</p>
+          <h1>Other Plants</h1>
         <div id="otherPlantsRenderDiv">
         {renderPlants(plants)}
         <PlantModal plant={modalData} show={modalOpen} handleClose={()=> setModalOpen(false)}/>

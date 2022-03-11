@@ -3,7 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 
-function Login({show,handleClose,user,setUser}) {
+function Login({show,handleClose,user,setUser,setUsersPlantsFunction}) {
   const [username,setUsername]= useState([])
   const [password,setPassword]= useState([])
   const [errors, setErrors] = useState([]);
@@ -25,7 +25,6 @@ function Login({show,handleClose,user,setUser}) {
       r.json().then((err) => setErrors(err.errors));
     }
   });}
-    console.log(errors)
     
     return(
       <Modal show={show} onHide={handleClose} >
@@ -35,7 +34,7 @@ function Login({show,handleClose,user,setUser}) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="modalBody">
-      <form onSubmit={handleSubmit} className="modal-details" className="modal-content" className="modalBody">
+      <form onSubmit={handleSubmit} className="modal-details modalBody">
           <label >Username</label>
           <input type="text"  value={username} onChange={(e) => setUsername(e.target.value)}/> <br/>
           <label>Password</label>

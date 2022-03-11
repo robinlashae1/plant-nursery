@@ -1,23 +1,33 @@
 import HomeBanner from "../bars/HomeBanner";
 import BottomBorder from "../bars/BottomBorder";
 import AddPlant from '../Forms/AddPlant.js';
-import {React, useState, useEffect} from "react";
+import UpdatesModal from "../Forms/UpdatesModal";
+import AddComment from '../Forms/AddComment.js';
+import {React, useState} from "react";
 import PlantCard from "./PlantCard";
 import Collapsible from 'react-collapsible'
+import Rescue from './Rescue'
 
 
-function Nursery({plantsTypesData,user,setUser}) {
+function Nursery({plantsTypesData,user,setUser,handleLogoutClick,loginModalShow,setLoginModalShow,setUsersPlants,usersPlants}) {
 
-    const [plantModalShow, setPlantModalShow] = useState(false);
+    const [updatesModalShow, setUpdatesModalShow] = useState(false);
+    const [plantModalData, setPlantModalData]=useState([])
     // console.log(user)
-    console.log(plantsTypesData)
+    console.log(usersPlants)
+
+    function handleDeleteRerender(item){
+        const arr = usersPlants.filter((item) => item.name !== item);
+        console.log(arr);
+    };
     
     function renderUsersPlants(user){
-            if (user.plants){
+            if (user.plants.length > 0){
+                setUsersPlants(user.plants)
                 return(
-                    user.plants.map(plant=>{
+                    usersPlants.map(plant=>{
                         return(
-                            <PlantCard key={plant.id} plantsTypesData={plantsTypesData} className={"nurseryPlant"} plant={plant}/>
+                            <PlantCard handleDeleteRerender={handleDeleteRerender} handleNurseryModalOpen={handleNurseryModalOpen} key={plant.id} plantsTypesData={plantsTypesData} className={"nurseryPlant"} plant={plant}/>
                         )
                         }     
                     ))
@@ -27,17 +37,32 @@ function Nursery({plantsTypesData,user,setUser}) {
                 )
             }
         }
+        function handleNurseryModalOpen(plant){
+            setUpdatesModalShow(true);
+            setPlantModalData(plant)
+        }
+    
     return (
         user?
         <div className="nurseryPage">
-        <HomeBanner />
-        <p>My Plants</p>
-        <Collapsible trigger="Add Plant" id="collapseForm">
-            <AddPlant  user={user} plantsTypesData={plantsTypesData}/>
+        <HomeBanner handleLogoutClick={handleLogoutClick} user={user}/>
+        <h1>My Plants</h1>
+        
+        
+        <div id="nurseryPlantSpace">
+           {renderUsersPlants(user)}
+        </div>
+        <UpdatesModal usersUpdates={user.updates} plant={plantModalData} show={updatesModalShow} handleClose={()=> setUpdatesModalShow(false)}/>
+        <div id="collapseSpace">
+          <Collapsible trigger="Add Plant" id="collapseForm">
+            <AddPlant  setUsersPlants={setUsersPlants} usersPlants={usersPlants} user={user} plantsTypesData={plantsTypesData}/>
         </Collapsible>
-        {renderUsersPlants(user)}
+        <Collapsible trigger="Add Update" id="collapseForm">
+            <AddComment  user={user} />
+        </Collapsible> 
+        </div>
         <BottomBorder />
-        </div> : <></>
+        </div> : <Rescue setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow} user={user} setUser={setUser} user={user}/>
      );
 }
 

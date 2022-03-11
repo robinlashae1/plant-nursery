@@ -1,6 +1,6 @@
 class PlantTypeSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers 
-  attributes :id,:name,:image,:description, :nursery_picture
+  attributes :id,:name,:image,:description, :nursery_picture, :nickname
   
   def nursery_picture
        if object.nursery_picture.attached?

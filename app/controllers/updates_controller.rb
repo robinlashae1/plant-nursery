@@ -8,14 +8,14 @@ class UpdatesController < ApplicationController
         updates = find_updates
         render json: updates, status: :ok
     end
-    def create(params)
-        updates = find_updates
-        updates.create!(params)
-        render json: updates, status: :created
+    def create
+        update = Update.create(patch_params)
+        render json: update, status: :created
+        
     end
     def updated
         updates = find_updates
-        updates.update!(params)
+        updates.update!(patch_params)
         render json: updates, status: :accepted
     end
     def delete

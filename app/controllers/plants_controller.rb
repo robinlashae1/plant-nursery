@@ -2,11 +2,11 @@ class PlantsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     def index
       plants = Plant.all
-      render json: plants
+      render json: plants.to_json(include: :updates)
     end
     def show
         plants = find_plants
-        render json: plants, status: :ok
+        render json: plants.to_json(include: :updates)
     end
     def create
         plants = Plant.create(patch_params)

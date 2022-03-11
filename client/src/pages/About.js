@@ -2,11 +2,11 @@ import React from "react";
 import HomeBanner from "../bars/HomeBanner";
 import BottomBorder from "../bars/BottomBorder";
 
-function About(){
+function About({user,handleLogoutClick}){
     return(
     <div className="aboutPage">
-        <HomeBanner title="ABOUT US"/>
-        
+        <HomeBanner handleLogoutClick={handleLogoutClick} user={user}/>
+        <h1>About Us</h1>
         <div className="aboutUs">
             <p>Born out of the need for easy access to local beauty services<br/>
                 tailored towards POC on a PWI campus, Campus Finder works to <br/>

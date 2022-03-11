@@ -12,6 +12,9 @@ import "./App.css";
 function App() {
     const [user, setUser] = useState(null);
     const [plantsTypesData,setPlantTypesData]=useState([])
+    const [loginModalShow, setLoginModalShow] = useState(false);
+    const [signupModalShow, setSignupModalShow] = useState(false);
+    const [usersPlants, setUsersPlants]=useState([])
 
    useEffect(() => {
     fetch("/plant_types")
@@ -33,32 +36,42 @@ function App() {
         });
     }, []);
 
-//plantsTypesData
-console.log(user)
+    function setUsersPlantsFunction(user){
+      if (user && user.plants > 0){
+        setUsersPlants(user.plants)
+        return(
+          usersPlants
+        )
+      }
+    }
+      
           return (
         <div className='App'>
       <BrowserRouter>
       <Switch>
           <Route exact path="/" >
-            <HomePage user={user} setUser={setUser} user={user}/>
+            <HomePage signupModalShow={signupModalShow} setSignupModalShow={setSignupModalShow} setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow} handleLogoutClick={handleLogoutClick} user={user} setUser={setUser}/>
           </Route>
           <Route exact path="/about">
-            <About/>
+            <About handleLogoutClick={handleLogoutClick} user={user}/>
           </Route>
           <Route exact path="/nursery" >
-            <Nursery plantsTypesData={plantsTypesData} user={user} setUser={setUser}/>
+            <Nursery setUsersPlants={setUsersPlants} usersPlants={usersPlants} handleLogoutClick={handleLogoutClick} plantsTypesData={plantsTypesData} user={user} setUser={setUser} setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow}/>
           </Route>
           <Route exact path="/rescue">
             <Rescue/>
           </Route>
           <Route exact path="/all_Plants">
-            <OtherPlant plants={plantsTypesData} />
+            <OtherPlant handleLogoutClick={handleLogoutClick} user={user} plants={plantsTypesData} />
           </Route>
           <Route exact path="/signup">
             <SignUp onLogin={setUser}/>
           </Route>
           <Route exact path="/login">
             <Login />
+          </Route>
+          <Route exact path="/rescue">
+            <Rescue setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow} user={user} setUser={setUser}/>
           </Route>
       </Switch>
       </BrowserRouter>

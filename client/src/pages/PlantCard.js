@@ -1,17 +1,22 @@
 
-function PlantCard({plant,className,plantsTypesData,handleModalOpen}) {
+function PlantCard({plant,className,plantsTypesData,handleModalOpen,handleNurseryModalOpen,handleDeleteRerender}) {
     
-    console.log(plant)
+   
     function handleDelete(id){
         fetch(`/plants/${id}`,{
            method: "DELETE"}).then((r) => {
-               if (r.ok){ console.log("deleted")}
+               if (r.ok){
+                   r.json().then((r) => console.log(r))
+               }else {
+                    r.json().then((err) => console.log(err.errors));
+                  }
+               
            } )}
 
     if (className === "OtherPlant"){
 
         const des = plant.description
-        const count = 190
+        const count = 170
         const results = des.slice(0, count)
          return (
              plant?
@@ -27,16 +32,16 @@ function PlantCard({plant,className,plantsTypesData,handleModalOpen}) {
             const plantMonths = plant.age / 30
             const plantsAge = Math.round(plantMonths)
             const plantsAgeYears = plant.age * .002738
+            
 
-            if (plantMonths > 12){return(<p id="nurseryPlantAge"><i>{Math.round(plantsAgeYears * 10)/10} Years Old</i></p>)
+            if (plantMonths > 11){return(<p id="nurseryPlantAge"><i>{Math.round(plantsAgeYears * 10)/10} Years Old</i></p>)
             } else { return( <p id="nurseryPlantAge"><i>{plantsAge} Months Old</i></p>)}}
 
             const PlantTypes= plantsTypesData.filter(plantType=>(
-            plantType.id === plant.plant_type_id))
-            console.log(PlantTypes)
-
+                plantType.id === plant.plant_type_id))
+            
         return(
-            plant?
+            PlantTypes[0]?
             <div className="nursery PlantDiv">
                 <button id="removePlantButton" onClick={()=> handleDelete(plant.id)}>Remove</button>
              <img id="nurseryPlantImg" src={PlantTypes[0].nursery_picture.url} alt={plant.name}/>
@@ -46,12 +51,13 @@ function PlantCard({plant,className,plantsTypesData,handleModalOpen}) {
                     {renderPlantAge(plant)}  
                 </div>
                 <div id="nurseryPlantType">
-                <p style={{marginRight: '30%', marginLeft: '10px'}}>Plant Type:</p><i>{PlantTypes[0].name}</i>  
+                <p style={{
+                    marginRight: '10%', marginLeft: '10px', 
+                    marginTop: 'auto',fontSize: '13px'}}>Plant Type:</p><i style={{fontSize: '13px', right: "0"}}>{PlantTypes[0].nickname}</i>  
                 </div>
                 <div id="updateButtons">
-                    <p style={{marginRight: '30%', marginLeft: '10px'}}><b>Updates:</b></p>
-                <button style={{marginRight: '10px'}}>Add</button>
-                <button>View All</button>
+                    <p style={{marginRight: '20%', marginLeft: '10px', marginTop: 'auto'}}><b>Updates:</b></p>
+                <button onClick={() => handleNurseryModalOpen(plant)}>View All</button>
                 </div>
              </div> 
             </div>:<></>   

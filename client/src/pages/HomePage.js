@@ -1,12 +1,11 @@
-import {React,useState,useEffect} from "react";
+import {React,useEffect} from "react";
 import Login from "../Forms/Login";
 import SignUp from "../Forms/SignUp";
 import HomeBanner from "../bars/HomeBanner";
+import giphy1 from "../public/giphy1.gif"
+import giphy from "../public/giphy.gif"
 
-export default function HomePage({user,setUser}) {
-    const [loginModalShow, setLoginModalShow] = useState(false);
-    const [signupModalShow, setSignupModalShow] = useState(false);
-    console.log(user)
+export default function HomePage({ user,setUser,handleLogoutClick,setLoginModalShow,loginModalShow,signupModalShow,setSignupModalShow}) {
 
     useEffect(() => {
         fetch("/me").then((response) => {
@@ -20,10 +19,10 @@ export default function HomePage({user,setUser}) {
     return (
         user?
         <div className="Home">
-             <HomeBanner title="ABOUT US"/>
+             <HomeBanner handleLogoutClick={handleLogoutClick} user={user}/>
         <div className="lander">
             <div id="firstGif" className="homePlantGif">
-                <iframe src="https://giphy.com/embed/EpwNE7ewhFOwOdt82i" width="480" height="480" frameBorder="0" class="giphy-embed"></iframe>
+                <img src={giphy1} style={{width:"480", height:"480"}} alt="waving plant gif"/>
             </div>
             <div id="nameSpace">
                <h1>Hi {user.name},</h1>
@@ -32,18 +31,28 @@ export default function HomePage({user,setUser}) {
             </div>
             
             <div id="lastGif" className="homePlantGif">
-            <iframe src="https://giphy.com/embed/Vv2KPGwl84NGdkciAB" width="221" height="480" frameBorder="0" class="giphy-embed"></iframe>
+            <img src={giphy1} style={{width:"221", height:"480"}} alt="waving plant gif"/>
             </div>
         </div>
     </div>
-    :<div className="Home">
+    : <div className="Home">
+     <HomeBanner handleLogoutClick={handleLogoutClick} user={user}/>
             <div className="lander">
+                 <div id="firstGif" className="homePlantGif">
+                 <img src={giphy1} style={{width:"480", height:"480"}} alt="waving plant gif"/>
+            </div>
+            <div id="nameSpace">
                 <h1>Nursery</h1>
                 <p className="text-muted">Track Your Plants</p>
                 <button type="button" id="serviceCreateButton" className="button" onClick={()=> setSignupModalShow(true)}>Sign Up</button> 
                     <SignUp show={signupModalShow} handleClose={()=> setSignupModalShow(false)}/>
                 <button type="button" id="serviceCreateButton" className="button" onClick={()=> setLoginModalShow(true)}>Sign In</button> 
-                    <Login show={loginModalShow} setUser={setUser} handleClose={()=> setLoginModalShow(false)}/>
+                    <Login  show={loginModalShow} setUser={setUser} handleClose={()=> setLoginModalShow(false)}/>
+            </div>
+            <div id="lastGif" className="homePlantGif">
+            <img src={giphy} style={{width:"221", height:"480"}} alt="waving plant gif"/>
+            </div>
+                
             </div>
         </div> 
     )

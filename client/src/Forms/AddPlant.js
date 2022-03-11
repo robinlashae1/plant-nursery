@@ -1,18 +1,16 @@
 import {React,useState} from "react";
 import { Button } from "react-bootstrap";
 
-function AddPlant({user,plantsTypesData,handleClose}) {
+function AddPlant({user,plantsTypesData,setUsersPlants,usersPlants}) {
 
     const [newName,setNewName]= useState([])
     const [newType,setNewType]= useState([])
     const [ageMonths,setAgeMonths]= useState([])
     let ageDays = ageMonths * 30
-    console.log("ageMoths:", ageMonths)
-  console.log("ageDays:",ageDays)
-  console.log(user)
+
 
       function handleSubmit(e){
-          e.preventDefault();
+          // e.preventDefault();
           fetch(`/plants`, {
             method: "POST",
             headers: {
@@ -26,16 +24,16 @@ function AddPlant({user,plantsTypesData,handleClose}) {
             }),
           })
             .then((r) => r.json())
-            .then((data) => console.log(data)) 
+            .then((r) => setUsersPlants(usersPlants.concat(r)))
         }
 
       return (
-        <div>
-            <label >Name</label>
+        <div id="addPlantForm">
+            <label >Name</label><br/>
             <input type="text"  onChange={(e)=>{setNewName(e.target.value)}}/> <br/>
-            <label >How Many Months Old is your Plant</label>
-            <input type="text"  onChange={(e)=>{setAgeMonths(e.target.value)}}/><br/>
-          <label >What type of Plant is this?</label>
+            <label >Plant Age</label><br/>
+            <input placeholder="Months" type="text"  onChange={(e)=>{setAgeMonths(e.target.value)}}/><br/>
+          <label >What type of Plant is this?</label><br/>
           <select  onChange={(e)=>{setNewType(e.target.value)}}><br/>
           <option></option>
             {plantsTypesData.map(type=>(
@@ -45,7 +43,6 @@ function AddPlant({user,plantsTypesData,handleClose}) {
             <br/> 
         <div>
           <Button type="submit" data-dismiss="modal" className="button" id="modalSubmit" form="modal-details" onClick={handleSubmit} >Submit</Button>
-        <Button variant="secondary" onClick={handleClose} className="button" id="modalClose">Close</Button>
         </div>
       </div> 
       )

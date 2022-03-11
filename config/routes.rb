@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :plant_types
-  resources :comments
   resources :users
   resources :plants
+  resources :updates
 
   post "/signup", to: "users#create"
   get "/me", to: "users#show"

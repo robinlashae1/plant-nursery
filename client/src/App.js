@@ -35,15 +35,15 @@ function App() {
             .then((user) => setUser(user));}
         });
     }, []);
+    useEffect(() => {
+      fetch("/usersPlants").then((r) => {
+      if (r.ok) {
+          r.json()
+          .then((plants) => setUsersPlants(plants));}
+      });
+  }, []);
 
-    function setUsersPlantsFunction(user){
-      if (user && user.plants > 0){
-        setUsersPlants(user.plants)
-        return(
-          usersPlants
-        )
-      }
-    }
+  
       
           return (
         <div className='App'>
@@ -72,6 +72,9 @@ function App() {
           </Route>
           <Route exact path="/rescue">
             <Rescue setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow} user={user} setUser={setUser}/>
+          </Route>
+          <Route>
+            <Rescue loginModalShow={loginModalShow} setLoginModalShow={setLoginModalShow} setUser={setUser} user={user}/>
           </Route>
       </Switch>
       </BrowserRouter>

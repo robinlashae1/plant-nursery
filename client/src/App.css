@@ -2,9 +2,11 @@
   text-align: center;
   margin: 0;
   padding: 0;
-  background-color: darkkhaki;
   height: 100%;
   width: 100%;
+  font-style: normal;
+  font-weight: 500;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .App-logo {
@@ -28,18 +30,50 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+/* Login */
+.modalLogins{
+  color: black !important;
+  font-style: inherit !important;
+  font-family: 'Courier New', Courier, monospace;
+}
+.loginButton{
+  margin-left: 4%;
+  width: 96%;
+  height: 70%;
+  background-color: #ffffff; /* Green */
+  border: none;
+  border: #000000;
+  border-style: solid;
+  border-width: .5px ;
+  border-color: #000000;
+  color: rgb(0, 0, 0);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  font-family: 'Courier New', Courier, monospace;
+  margin-top: 1%;
+}
+.loginButton:hover{
+  background-color: #7e733567 !important;
+}
 
 /* Plant Card */
+#nurseryPlantImg{
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 160px;
+}
 .other{
-  width: 19%;
-  height: 300px;
+  width: 18vw;
+  height: 63vh;
   max-height: 400px;
-  margin-left: 9px !important;
+  margin-left: 12px !important;
   margin-bottom: 7px !important;
 }
 .other:hover{
-  background-color: #886767;
+  background-color: #7e733567 !important;
 }
 .PlantDiv{
   display: inline-block;
@@ -62,7 +96,7 @@ flex-wrap: nowrap
   max-height: 300px;
   height: 50%;
   margin-top: 5px;
-  background-color: black;
+  object-fit: scale-down;
 }
 #otherPlantName{
 padding: 0;
@@ -73,6 +107,7 @@ margin-top: -4px;
   text-align: center;
   font-size: 16px;
   margin-top: -15px;
+  overflow: hidden;
 }
 #nurseryPlantImg{
   width: 90%;
@@ -91,7 +126,17 @@ margin-top: -4px;
 #plantDescriptionSpace{
   width: 100%;
   height: 50%;
-  background-color: #5c9741;
+  background-color: #7e733567 !important;
+}
+.updateButton{
+  background-color: #282c3400;
+  border: none;
+  margin-left: 70%;
+}
+#buttondDiv{
+  display: flex;
+  flex-direction: row;
+  opacity: .5;
 }
 #nurseryPlantType{
   display: flex;
@@ -105,22 +150,58 @@ margin-top: -4px;
   flex-direction: row;
 }
 #removePlantButton{
-
+left: 0;
+width: 10%;
+border: none;
+background-color: rgba(0, 0, 0, 0);
 }
+/* About */
+#textSpace{
+  display: flex;
+  flex-direction: row ;
+}
+.aboutPage{
+  overflow-x: hidden;
+}
+#aboutImage{
+  /* background-color: #4CAF50; */
+  width: 55%;
+  /* background-color: #7e733567 !important; */
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 30px 30px #7e733567
+}
+.aboutUs{
+  text-align: left;
+  margin-left: 50px ;
+  font-size: 20px;
+  width: 126%;
+}
+#titleStyle{ 
+  text-align: left;
+  margin-left: 50px;
+  font-size: 40px;
+  margin-bottom: -10px;
+  font-family: 'Jazz LET', 'fantasy';
+  color: rgb(32, 100, 32);
+  }
 /* Bottom Border */
 #flowerBorder{
-  width: 100%;
+  /* width: 100%; */
   /* height: 50%; */
 }
 /* 1Home Banner */
 .navLinks:hover{
-  text-decoration: underline !important;
  color: rgb(0, 0, 0) !important;
- background-color: #ECB984 !important;
+ background-color: #7e733567 !important;
 }
 .logoutButton{
   background-color: rgba(0, 0, 0, 0) !important;
   border: none;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: 'Courier New', Courier, monospace;
 }
 #title-banner{
   height: 100%;
@@ -135,26 +216,63 @@ margin-top: -4px;
 }
 #navLinkDiv{
 margin: auto;
-width: 55%;
+width: 70%;
 }
 .homepage{
   display: inline-block;
-  width: 100%;
-  height: 20%
+  width: 100vw;
+  height: 100%
   }
+  #homepageLink{
+  text-decoration: none;
+  color: rgb(32, 100, 32);
+  font-family: 'Jazz LET', 'fantasy';
+  font-size: x-large !important;
+  }
+ 
 
 /* HomePage */
+.homeButtons{
+  background-color: #7e7335; /* Green */
+  border: thin;
+  border-style: solid;
+  border-color: black;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
+}
 .Home{
-  background-color: darkkhaki;
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
 .lander{
   display: inline-block;
-  width: 100%;
-  overflow: hidden;
+  width: 100vw;
+  height: 75.4vh;
+  position: relative;
+ justify-content: center;
+ background-position: center;
+  background-size: cover;
+ background-image: url("./public/Background.jpg");
+ 
 }
+.lander::before{
+   position: absolute;
+   content: "";
+  top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.75;
+      
+ 
+}
+
 #firstGif{
   position: absolute;
   left: 0;
@@ -170,8 +288,12 @@ width: 55%;
 #nameSpace{
   display: inline-block;
   position: absolute;
-  margin-left: 23%;
+  margin-left: -10%;
+  margin-top: 7%;
+  padding: 15px;
+  background-color: #fefefe93;
 }
+
 .homePlantGif{
   width: 10%;
   height: 20%;
@@ -205,7 +327,7 @@ body.modal-open {
   overflow-y: hidden;
 }
 .modalHeader{
-  background-color: #3a2f2f;
+  background-color: #3a2f2f00;
   font-size: 30px;
   font-weight: 50px;
   color: #dfdecd;
@@ -213,8 +335,17 @@ body.modal-open {
   text-align: center;
   height: 70px;
 }
+.modalFormInput{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 .modalBody{
-  background-color: #974141;
+  background-color: #97414100;
   font-size: 20px;
   font-weight: 50px;
   text-align: left;
@@ -225,7 +356,7 @@ body.modal-open {
   height: 60%;
 }
 .modalFooter{
-  background-color: #3a2f2f;
+  background-color: #3a2f2f00;
   max-height: 20%;
   text-align: center;
   height: 70px;
@@ -242,15 +373,27 @@ body.modal-open {
   width: 100%;
   text-align: center;
 }
+div.Collapsible{
+color: #000000;
+background-color: #fff20000;
+border: #000000;
+border-style: solid;
+border-width: .5px;
+}
+div.Collapsible:hover{
+  background-color: #7e733567 !important;
+}
 /* Updates Modal */
 #updateDiv{
 width: 95%;
-background-color: #ECB984;
+background-color: #7e733567 !important;
 margin-bottom: 5px;
+font-family: 'Courier New', Courier, monospace;
 }
 #updateStatusDate{
   display: flex;
   flex-direction: row;
+  
   }
 /* Nursery Page */
 .nurseryPage{
@@ -263,17 +406,21 @@ margin-bottom: 5px;
   width: 85%;
   position: absolute;
   margin-left: 25px;
+  height: auto;
 }
 #collapseSpace{
   right:0;
   margin-right: 10px;
   position: absolute;
   width: 15%;
-  background-color: #5c9741;
+  /* background-color: #5c9741; */
+  background-color: #7e73353a !important;
 }
 #collapseForm{
   right:0;
   position: absolute;
+  background-color: #7e733567 !important;
+  height: 50px;
 }
 /* Other Plants Page */
 #otherPlantsRenderDiv{
@@ -281,24 +428,34 @@ margin-bottom: 5px;
   flex-direction: row;
   flex-wrap: wrap;
 }
+#otherPlansHeading{
+  font-size: 40px;
+  font-family: 'Jazz LET', 'fantasy';
+  color: rgb(32, 100, 32);
+}
 /* Plant Modal */
 #plantModal{
   text-align: center;
 }
 #plantModalTitle{
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
-  background-color: #974141;
+  color: rgb(32, 100, 32);
+  font-family: 'Jazz LET', 'fantasy';
 }
 #plantModalBody{
-height: 50% !important;
-background-color: #5c9741;
+height: 40% !important;
+display: flex;
+flex-direction: row;
 }
 #plantModalImage{
-  width: 70%;
-  height: 50%;
+  width: 60%;
+  height: 40%;
+}
+#plantModalDescription{
+  font-size: 20px;
+  background-color: #29802c77;
 }
 #plantModalFooter{
   height: 20% !important;
-  background-color: #974141 ;
 }

@@ -2,12 +2,12 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import { Button } from "react-bootstrap";
 
-function NavBar({user,handleLogoutClick,setUsersPlantsFunction}) {
+function NavBar({user,handleLogoutClick}) {
   return (
     user?
     <div id="navLinkDiv">
        <a href="/" id="homepageLink">
-          <h1 >Plant Nursery</h1>
+          <h1 >Seed Watch</h1>
           </a>
       <NavLink className="navLinks"
         to="/"
@@ -24,27 +24,27 @@ function NavBar({user,handleLogoutClick,setUsersPlantsFunction}) {
         exact
         style={linkStyles}
       >
-        About Us
+        About
       </NavLink>
       <NavLink className="navLinks"
         to="/nursery"
         exact
-        style={linkStyles} onClick={()=>setUsersPlantsFunction(user)}
+        style={linkStyles}
       >
-        My Collection
+        My Nursery
       </NavLink>
       <NavLink className="navLinks"
         to="/all_Plants"
         exact
         style={linkStyles}
       >
-        Explore other Plants
+        Explore 
       </NavLink>
       <Button className="navLinks logoutButton" onClick={handleLogoutClick} style={linkStyles} >Log Out</Button >
     </div>: 
     <div>
     <a href="/" id="homepageLink">
-          <h1 >Plant Nursery</h1>
+          <h1 >Seed Watch</h1>
           </a>
     <NavLink className="navLinks"
         to="/"
@@ -61,21 +61,21 @@ function NavBar({user,handleLogoutClick,setUsersPlantsFunction}) {
         exact
         style={linkStyles}
       >
-        About Us
+        About
       </NavLink>
       <NavLink className="navLinks"
         to="/nursery"
         exact
         style={linkStyles}
       >
-        My Collection
+        My Nursery
       </NavLink>
       <NavLink className="navLinks"
         to="/all_Plants"
         exact
         style={linkStyles}
       >
-        Explore other Plants
+        Explore
       </NavLink>
       </div>
   );
@@ -88,5 +88,8 @@ function NavBar({user,handleLogoutClick,setUsersPlantsFunction}) {
       padding: "12px",
       margin: "-10px 6px 12px",
       textDecoration:"none",
-      color: "black"
+      color: "black",
+      border: "thin",
+      borderStyle: "solid",
+      borderColor: "black"
     };

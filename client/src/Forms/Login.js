@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom";
 function Login({show,handleClose,user,setUser,setUsersPlantsFunction}) {
   const [username,setUsername]= useState([])
   const [password,setPassword]= useState([])
-  const [errors, setErrors] = useState([]);
   let history = useHistory();
   
     function handleSubmit(e) {
@@ -22,28 +21,25 @@ function Login({show,handleClose,user,setUser,setUsersPlantsFunction}) {
           if (r.ok){
             r.json().then((user) => setUser(user)).then(history.push("/"));
     } else {
-      r.json().then((err) => setErrors(err.errors));
+      r.json().then((err) => console.log(err));
     }
   });}
     
     return(
       <Modal show={show} onHide={handleClose} >
         <Modal.Header className="modalHeader">
-        <Modal.Title id="contained-modal-title-vcenter">
-            Login
+        <Modal.Title className="modalLogins" id="contained-modal-title-vcenter">
+        🌱 Welcome Back 🌱
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="modalBody">
       <form onSubmit={handleSubmit} className="modal-details modalBody">
-          <label >Username</label>
-          <input type="text"  value={username} onChange={(e) => setUsername(e.target.value)}/> <br/>
-          <label>Password</label>
-          <input type="text"  value={password} onChange={(e) => setPassword(e.target.value)}/><br/>
+          <input type="text" className="modalFormInput" placeHolder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/> <br/>
+          <input type="password" className="modalFormInput" placeHolder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </form> 
       </Modal.Body>
        <Modal.Footer className="modalFooter">
-      <Button type="submit" data-dismiss="modal" className="button" id="modalSubmit" form="modal-details" onClick={handleSubmit} >Submit</Button>
-      <Button variant="secondary" onClick={handleClose} className="button" id="modalClose">Close</Button>
+      <Button type="submit" data-dismiss="modal" className="button loginButton" id="modalSubmit" form="modal-details" onClick={handleSubmit} >Submit</Button>
       </Modal.Footer>
     </Modal>
     )  

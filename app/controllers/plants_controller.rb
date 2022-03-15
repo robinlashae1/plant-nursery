@@ -12,18 +12,19 @@ class PlantsController < ApplicationController
         plants = Plant.create(patch_params)
         render json: plants, status: :created
     end
-    def updated
-        plants = find_plants
-        plants.update!(params)
-        render json: plants, status: :accepted
+    def update
+        @plants = find_plants
+        @plants.update(patch_params)
+        render json: @plants, status: :ok
     end
     def destroy
         plants = find_plants
-        if plants
-            plants.destroy!
-        render json: {}
-        end
+        plant_id = plants.id
+        plants.destroy!
+        render json: plant_id
     end
+    
+
     private
     def find_plants
         Plant.find_by(id: params[:id])

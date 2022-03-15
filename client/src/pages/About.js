@@ -1,24 +1,38 @@
 import React from "react";
 import HomeBanner from "../bars/HomeBanner";
-import BottomBorder from "../bars/BottomBorder";
+import Aggy from "../public/Aggy.jpg";
 
-function About({user,handleLogoutClick}){
-    return(
+function About({ user, handleLogoutClick }) {
+    
+  return (
     <div className="aboutPage">
-        <HomeBanner handleLogoutClick={handleLogoutClick} user={user}/>
-        <h1>About Us</h1>
-        <div className="aboutUs">
-            <p>Born out of the need for easy access to local beauty services<br/>
-                tailored towards POC on a PWI campus, Campus Finder works to <br/>
-                connect the students looking for specific beauty services with <br/>
-                the students providing these services on campus. A perfect place <br/>
-                for new entrepreneurs to grow the reach of their business, Campus <br/>
-                Finder provides a localized hub for students to discover the essential<br/> 
-                services offered within the comfort of their own community. From hair braiding<br/> 
-                to nail techs, Campus Finder gives a list of the services available across the country.</p>
+      <HomeBanner handleLogoutClick={handleLogoutClick} user={user} />
+      <div style={{ marginTop: "25px" }}>
+        <h1 id="titleStyle">Where it Started...</h1>
+        <div id="textSpace">
+          <div className="aboutUs">
+            <p>
+              My plant collection started when my partner gifted me with our
+              Staghorn fern, Agatha in January of 2020. I grew very fondly of
+              our little fern and quickly realized I wanted to be a plant mom.
+              From 2020 to 2021 my partner and I collected dozens of plants from
+              Monsteras to snake plants.... we practically live in a jungle.
+              While I love taking care of my plants, keeping track of them all
+              can be very overwhelming at times. And just like that, Seed watch
+              was born! Now every plant parent has the right tool to keep their
+              plants{" "}
+              <u style={{ textDecorationThickness: ".5px" }}>
+                lively and happy
+              </u>
+              !
+            </p>
+          </div>
+          <div>
+            <img id="aboutImage" src={Aggy} />
+          </div>
         </div>
-        <BottomBorder/>
+      </div>
     </div>
-    )
+  );
 }
-export default About
+export default About;

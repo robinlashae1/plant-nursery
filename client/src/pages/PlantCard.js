@@ -99,15 +99,15 @@ function PlantCard({plant,className,plantsTypesData,handleModalOpen,handleNurser
           <div id="nurseryPlantType">
             <p
               style={{
-                marginRight: "10%",
+                marginRight: "3%",
                 marginLeft: "10px",
                 marginTop: "auto",
-                fontSize: "13px",
+                fontSize: "12px",
               }}
             >
               Plant Type:
             </p>
-            <i style={{ fontSize: "13px", right: "0" }}>
+            <i style={{ fontSize: "13px", right: "0",float: 'right' }}>
               {PlantTypes[0].nickname}
             </i>
           </div>

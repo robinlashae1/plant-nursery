@@ -17,6 +17,7 @@ function OtherPlants({ plants, user, handleLogoutClick }) {
       }
       return 0;
     });
+    
     return alphabeticalFiltered.map((plant) => {
       return (
         <PlantCard

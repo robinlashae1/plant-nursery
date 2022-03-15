@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  # if Rails.env.development?
+  #   scope format: true, constraints: { format: /jpg|png|gif|PNG/ } do
+  #     get '/*anything', to: proc { [404, {}, ['']] }
+  #   end
+  # end
+
   resources :plant_types
   resources :users
   resources :plants

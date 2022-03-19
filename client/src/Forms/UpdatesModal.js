@@ -4,6 +4,7 @@ import format from "date-fns/format";
 function UpdatesModal({ plant, show, handleClose}) {
 
   function renderUpdates(plant) {
+    console.log(plant)
     return plant.updates.map((update) => {
       const date = plant.created_at;
       const formattedDate = format(new Date(date), "dd / MMMM / yyyy");

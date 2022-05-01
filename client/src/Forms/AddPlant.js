@@ -62,7 +62,6 @@ function AddPlant({ user, plantsTypesData, setUsersPlants, usersPlants }) {
           setNewType(e.target.value);
         }}
       >
-        <br />
         <option></option>
         {plantsTypesData.map((type) => (
           <option key={type.id} value={type.id}>

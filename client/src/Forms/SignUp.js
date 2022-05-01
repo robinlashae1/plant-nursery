@@ -10,12 +10,16 @@ function AddPlant({ show, handleClose }) {
   const [err, setErr]= useState([])
 
   function validateForm(){
+    let newErr = {...err}
+    if (newPassword !== newPasswordConfirmation){
+    Object.assign(newErr,{1:{0: "Passwords must match"}})
+    } 
     return (
-    Object.entries(err).map( alert => {
-      return <p id="alert">{alert[1][0]}</p>
+    Object.entries(newErr).map( alert => {
+      return <p>{alert[1][0]}</p>
     }))
   }
-
+console.log(err)
   function handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
@@ -39,7 +43,7 @@ function AddPlant({ show, handleClose }) {
         }
       });
   }
-console.log(err)
+
   return (
     <Modal show={show} onHide={handleClose} className="modal">
       <Modal.Header className="modalHeader">
@@ -54,7 +58,7 @@ console.log(err)
         >
           <input
             className="modalFormInput"
-            placeHolder="Name"
+            placeholder="Name"
             type="text"
             required
             onChange={(e) => {
@@ -64,7 +68,7 @@ console.log(err)
           <br />
           <input
             className="modalFormInput"
-            placeHolder="Email"
+            placeholder="Email"
             type="text"
             required
             onChange={(e) => {
@@ -75,7 +79,7 @@ console.log(err)
           <input
             type="text"
             className="modalFormInput"
-            placeHolder="UserName"
+            placeholder="Username"
             required
             onChange={(e) => {
               setUsername(e.target.value);
@@ -85,7 +89,7 @@ console.log(err)
           <input
             type="password"
             className="modalFormInput"
-            placeHolder="Password"
+            placeholder="Password"
             required
             onChange={(e) => {
               setNewPassword(e.target.value);
@@ -95,14 +99,14 @@ console.log(err)
           <input
             type="password"
             className="modalFormInput"
-            placeHolder="Password Confirmation"
+            placeholder="Password Confirmation"
             required
             onChange={(e) => {
               setNewPasswordConfirmation(e.target.value);
             }}
           />
           <br />
-          <div>
+          <div className="alert">
             {validateForm()}
           </div>
         </form>

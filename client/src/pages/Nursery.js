@@ -22,7 +22,7 @@ function Nursery({
   const [plantModalData, setPlantModalData] = useState([]);
   const [plantUpdateModalShow, setPlantUpdateModalShow] = useState(false);
   // // console.log(user)
-  // console.log(user)
+console.log(plantsTypesData)
 
   function handleDeleteRerender(item) {
     const arr = usersPlants.filter((plant) => plant.id !== item);
@@ -57,7 +57,8 @@ function Nursery({
     setPlantModalData(plant);
   }
 
-  return user ? (
+  return (
+    plantsTypesData?
     <div className="nurseryPage">
       <HomeBanner handleLogoutClick={handleLogoutClick} user={user} />
 
@@ -92,16 +93,9 @@ function Nursery({
           </Collapsible>
         </Collapsible>
       </div>
-    </div>
-  ) : (
-    <Rescue
-      setLoginModalShow={setLoginModalShow}
-      loginModalShow={loginModalShow}
-      user={user}
-      setUser={setUser}
-      user={user}
-    />
-  );
+    </div> : <></>
+  ) 
+  ;
 }
 
 export default Nursery;

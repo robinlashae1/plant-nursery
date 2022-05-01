@@ -21,8 +21,8 @@ function Nursery({
   const [updatesModalShow, setUpdatesModalShow] = useState(false);
   const [plantModalData, setPlantModalData] = useState([]);
   const [plantUpdateModalShow, setPlantUpdateModalShow] = useState(false);
-  // // console.log(user)
-console.log(plantsTypesData)
+
+console.log(usersPlants)
 
   function handleDeleteRerender(item) {
     const arr = usersPlants.filter((plant) => plant.id !== item);

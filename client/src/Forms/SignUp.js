@@ -7,6 +7,14 @@ function AddPlant({ show, handleClose }) {
   const [newUsername, setUsername] = useState([]);
   const [newPassword, setNewPassword] = useState([]);
   const [newPasswordConfirmation, setNewPasswordConfirmation] = useState([]);
+  const [err, setErr]= useState([])
+
+  function validateForm(){
+    return (
+    Object.entries(err).map( alert => {
+      return <p id="alert">{alert[1][0]}</p>
+    }))
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,11 +28,18 @@ function AddPlant({ show, handleClose }) {
       method: "POST",
       body: formData,
     })
-      .then((r) => r.json())
-      .then((data) => console.log(data))
-      .then(handleClose);
+    .then((r) => {
+      if (r.ok) {
+          r.json()
+          .then((data) => console.log("data", data))
+          .then(handleClose);
+        }
+        else{
+          r.json().then((r) => setErr(r));
+        }
+      });
   }
-
+console.log(err)
   return (
     <Modal show={show} onHide={handleClose} className="modal">
       <Modal.Header className="modalHeader">
@@ -41,15 +56,17 @@ function AddPlant({ show, handleClose }) {
             className="modalFormInput"
             placeHolder="Name"
             type="text"
+            required
             onChange={(e) => {
               setNewName(e.target.value);
             }}
-          />{" "}
+          />
           <br />
           <input
             className="modalFormInput"
             placeHolder="Email"
             type="text"
+            required
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -59,15 +76,17 @@ function AddPlant({ show, handleClose }) {
             type="text"
             className="modalFormInput"
             placeHolder="UserName"
+            required
             onChange={(e) => {
               setUsername(e.target.value);
             }}
-          />{" "}
+          />
           <br />
           <input
             type="password"
             className="modalFormInput"
             placeHolder="Password"
+            required
             onChange={(e) => {
               setNewPassword(e.target.value);
             }}
@@ -77,11 +96,15 @@ function AddPlant({ show, handleClose }) {
             type="password"
             className="modalFormInput"
             placeHolder="Password Confirmation"
+            required
             onChange={(e) => {
               setNewPasswordConfirmation(e.target.value);
             }}
           />
           <br />
+          <div>
+            {validateForm()}
+          </div>
         </form>
       </Modal.Body>
       <Modal.Footer className="modalFooter">

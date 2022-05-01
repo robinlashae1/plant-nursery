@@ -31,3 +31,24 @@
 
 en:
   hello: "Hello world"
+# en:
+# en:
+#   activerecord:
+#     errors:
+#       models:
+#         item:
+#           attributes:
+#             name:
+#               blank: "${message}"
+              
+# config/locales/en.yml
+
+# en:
+# activerecord:
+# errors:
+# models:
+# article:
+# format: "`%{attribute}`: %{message}"
+# user:
+# format: "%{attribute} of the user %{message}"
+

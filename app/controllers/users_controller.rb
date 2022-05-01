@@ -4,9 +4,13 @@ class UsersController < ApplicationController
         render json: users.to_json(include: { plants: { include: :updates } } )
     end
     def create
-        user = User.create!(user_params)
-        session[:user_id] = user.id
-        render json: user, status: :created
+        user = User.new(user_params)
+        if user.save
+            session[:user_id] = user.id
+            render json: user, status: :created
+        else
+            render json: user.errors , status: 406
+        end
     end
     
     def show

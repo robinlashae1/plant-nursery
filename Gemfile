@@ -58,3 +58,5 @@ gem "image_processing", ">= 1.2"
 #Amazon s3 gem for active storage
 gem "aws-sdk-s3", require: false
 
+gem 'custom_error_message', git: 'https://github.com/thethanghn/custom-err-msg.git'
+

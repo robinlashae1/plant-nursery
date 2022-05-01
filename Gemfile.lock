@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/thethanghn/custom-err-msg.git
+  revision: b913309360995472507ea444c6f1a80315b99d28
+  specs:
+    custom_error_message (1.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -214,6 +220,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
+  custom_error_message!
   image_processing (>= 1.2)
   listen (~> 3.3)
   pg (~> 1.1)

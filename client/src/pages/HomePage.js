@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React} from "react";
 import Login from "../Forms/Login";
 import SignUp from "../Forms/SignUp";
 import HomeBanner from "../bars/HomeBanner";

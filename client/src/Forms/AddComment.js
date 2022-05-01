@@ -46,7 +46,7 @@ function AddComment({ user }) {
     });
   }
 
-  // console.log(updateErrors)
+  console.log(updateErrors)
 
   return user && user.plants ? (
     <div id="addPlantForm">

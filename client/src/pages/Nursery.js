@@ -2,19 +2,15 @@ import HomeBanner from "../bars/HomeBanner";
 import AddPlant from "../Forms/AddPlant.js";
 import UpdatesModal from "../Forms/UpdatesModal";
 import AddComment from "../Forms/AddComment.js";
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 import PlantCard from "./PlantCard";
 import Collapsible from "react-collapsible";
 import UpdatePlant from "../Forms/UpdatePlant";
-import Rescue from "./Rescue";
 
 function Nursery({
   plantsTypesData,
   user,
-  setUser,
   handleLogoutClick,
-  loginModalShow,
-  setLoginModalShow,
   setUsersPlants,
   usersPlants,
 }) {

@@ -8,7 +8,7 @@ function UpdatesModal({ plant, show, handleClose}) {
     return plant.updates.map((update) => {
       const date = plant.created_at;
       const formattedDate = format(new Date(date), "dd / MMMM / yyyy");
-
+// 
       return (
         <div id="updateDiv" key={update.id}>
           <div>
@@ -30,7 +30,7 @@ function UpdatesModal({ plant, show, handleClose}) {
             </p>
             <p
               style={{
-                marginTop: "auto",
+                // marginTop: "auto",
                 fontSize: "15px",
                 marginBottom: "1%",
                 marginTop: "1%",

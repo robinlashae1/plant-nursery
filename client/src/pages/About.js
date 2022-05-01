@@ -28,7 +28,7 @@ function About({ user, handleLogoutClick }) {
             </p>
           </div>
           <div>
-            <img id="aboutImage" src={Aggy} />
+            <img id="aboutImage" src={Aggy} alt="a small staghorn plant in a sunny window"/>
           </div>
         </div>
       </div>

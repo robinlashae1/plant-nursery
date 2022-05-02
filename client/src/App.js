@@ -46,8 +46,39 @@ console.log(plantsTypesData)
   
       
           return (
-      user?
-        <div className='App'>
+      !user ?
+      <div className='App'>
+      <BrowserRouter>
+      <Switch>
+          <Route exact path="/" >
+            <HomePage signupModalShow={signupModalShow} setSignupModalShow={setSignupModalShow} setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow} handleLogoutClick={handleLogoutClick} user={user} setUser={setUser}/>
+          </Route>
+          <Route exact path="/about">
+            <About handleLogoutClick={handleLogoutClick} user={user}/>
+          </Route>
+          <Route exact path="/rescue">
+            <Rescue/>
+          </Route>
+          <Route exact path="/all_Plants">
+            <OtherPlant handleLogoutClick={handleLogoutClick} user={user} plants={plantsTypesData} />
+          </Route>
+          <Route exact path="/signup">
+            <SignUp onLogin={setUser}/>
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/rescue">
+            <Rescue setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow} user={user} setUser={setUser}/>
+          </Route>
+          <Route>
+            <Rescue loginModalShow={loginModalShow} setLoginModalShow={setLoginModalShow} setUser={setUser} user={user}/>
+          </Route>
+      </Switch>
+      </BrowserRouter>
+    </div>
+    :
+    <div className='App'>
       <BrowserRouter>
       <Switch>
           <Route exact path="/" >
@@ -79,37 +110,7 @@ console.log(plantsTypesData)
           </Route>
       </Switch>
       </BrowserRouter>
-    </div>:
-     <div className='App'>
-     <BrowserRouter>
-     <Switch>
-         <Route exact path="/" >
-           <HomePage signupModalShow={signupModalShow} setSignupModalShow={setSignupModalShow} setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow} handleLogoutClick={handleLogoutClick} user={user} setUser={setUser}/>
-         </Route>
-         <Route exact path="/about">
-           <About handleLogoutClick={handleLogoutClick} user={user}/>
-         </Route>
-         <Route exact path="/rescue">
-           <Rescue/>
-         </Route>
-         <Route exact path="/all_Plants">
-           <OtherPlant handleLogoutClick={handleLogoutClick} user={user} plants={plantsTypesData} />
-         </Route>
-         <Route exact path="/signup">
-           <SignUp onLogin={setUser}/>
-         </Route>
-         <Route exact path="/login">
-           <Login />
-         </Route>
-         <Route exact path="/rescue">
-           <Rescue setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow} user={user} setUser={setUser}/>
-         </Route>
-         <Route>
-           <Rescue loginModalShow={loginModalShow} setLoginModalShow={setLoginModalShow} setUser={setUser} user={user}/>
-         </Route>
-     </Switch>
-     </BrowserRouter>
-   </div>
+    </div> 
   )}
 // }
 
